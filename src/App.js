@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
@@ -14,22 +14,28 @@ function Counter() {
   const [count, setCount] = useState(0);
   const [date, setDate] = useState(new Date());
 
+  useEffect(() => {
+    let newDate = new Date();
+    newDate.setDate(newDate.getDate() + count);
+    setDate(newDate);
+  }, [count]);
+
   function decreaseStep() {
     if (step > 1) {
-      setStep(step - 1);
+      setStep((s) => s - 1);
     }
   }
 
   function increaseStep() {
-    setStep(step + 1);
+    setStep((s) => s + 1);
   }
 
   function decreaseCount() {
-    setCount(count - step);
+    setCount((s) => s - step);
   }
 
   function increaseCount() {
-    setCount(count + step);
+    setCount((s) => s + step);
   }
 
   return (
@@ -46,7 +52,7 @@ function Counter() {
         <span>Count: {count}</span>
         <button onClick={increaseCount}>+1</button>
       </div>
-      <p>{date.toDateString()}</p>
+      <p>{`${date.toDateString()}`}</p>
     </>
   );
 }
