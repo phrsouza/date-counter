@@ -39,28 +39,52 @@ function Counter() {
   }
 
   return (
-    <>
-      <h1>Date counter</h1>
-      <div>
-        <button onClick={decreaseStep}>-1</button>
+    <div className="inline-block space-y-4">
+      <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
+        Date counter
+      </h1>
+      <div className="grid grid-cols-3 place-items-center">
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={decreaseStep}
+        >
+          -
+        </button>
         <span>Step: {step}</span>
-        <button onClick={increaseStep}>+1</button>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={increaseStep}
+        >
+          +
+        </button>
       </div>
 
-      <div>
-        <button onClick={decreaseCount}>-1</button>
+      <div className="grid grid-cols-3 place-items-center">
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={decreaseCount}
+        >
+          -
+        </button>
         <span>Count: {count}</span>
-        <button onClick={increaseCount}>+1</button>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={increaseCount}
+        >
+          +
+        </button>
       </div>
-      <span>
-        {count === 0
-          ? "Today is "
-          : count > 0
-          ? `${count} days from today is `
-          : `${Math.abs(count)} days ago was `}
-      </span>
-      <span>{`${date.toDateString()}`}</span>
-    </>
+      <div>
+        <span className="">
+          {count === 0
+            ? "Today is "
+            : count > 0
+            ? `${count} days from today is `
+            : `${Math.abs(count)} days ago was `}
+        </span>
+        <span>{`${date.toDateString()}`}</span>
+      </div>
+    </div>
   );
 }
 
