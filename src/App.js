@@ -38,6 +38,11 @@ function Counter() {
     setCount((s) => s + step);
   }
 
+  function resetValues() {
+    setCount(0);
+    setStep(1);
+  }
+
   return (
     <div className="inline-block space-y-4">
       <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
@@ -84,6 +89,12 @@ function Counter() {
         </span>
         <span>{`${date.toDateString()}`}</span>
       </div>
+      <button
+        className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+        onClick={resetValues}
+      >
+        Reset
+      </button>
     </div>
   );
 }
