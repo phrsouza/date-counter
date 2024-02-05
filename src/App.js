@@ -20,14 +20,14 @@ function Counter() {
     setDate(newDate);
   }, [count]);
 
-  function handleStepChange(e) {
-    setStep(parseInt(e.target.value));
+  function handleStepChange(value) {
+    setStep(value);
   }
 
-  function handleCountChange(e) {
-    if (Number.isNaN(parseInt(e.target.value))) return;
+  function handleCountChange(value) {
+    if (Number.isNaN(value)) return;
 
-    setCount(parseInt(e.target.value));
+    setCount(value);
   }
 
   function decreaseCount() {
@@ -55,7 +55,7 @@ function Counter() {
           min={1}
           max={10}
           value={step}
-          onChange={handleStepChange}
+          onChange={(e) => handleStepChange(Number(e.target.value))}
         />
       </div>
 
@@ -72,7 +72,7 @@ function Counter() {
           inputMode="numeric"
           pattern="[0-9]*"
           value={count}
-          onChange={handleCountChange}
+          onChange={(e) => handleCountChange(Number(e.target.value))}
         />
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
