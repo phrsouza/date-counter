@@ -20,14 +20,8 @@ function Counter() {
     setDate(newDate);
   }, [count]);
 
-  function decreaseStep() {
-    if (step > 1) {
-      setStep((s) => s - 1);
-    }
-  }
-
-  function increaseStep() {
-    setStep((s) => s + 1);
+  function handleStepChange(e) {
+    setStep(parseInt(e.target.value));
   }
 
   function decreaseCount() {
@@ -48,20 +42,15 @@ function Counter() {
       <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
         Date counter
       </h1>
-      <div className="grid grid-cols-3 place-items-center">
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={decreaseStep}
-        >
-          -
-        </button>
+      <div className="grid grid-rows-2-3 place-items-center">
         <span>Step: {step}</span>
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={increaseStep}
-        >
-          +
-        </button>
+        <input
+          type="range"
+          min={1}
+          max={10}
+          value={step}
+          onChange={handleStepChange}
+        />
       </div>
 
       <div className="grid grid-cols-3 place-items-center">
