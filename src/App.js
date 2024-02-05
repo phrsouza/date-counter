@@ -24,6 +24,12 @@ function Counter() {
     setStep(parseInt(e.target.value));
   }
 
+  function handleCountChange(e) {
+    if (Number.isNaN(parseInt(e.target.value))) return;
+
+    setCount(parseInt(e.target.value));
+  }
+
   function decreaseCount() {
     setCount((s) => s - step);
   }
@@ -60,7 +66,13 @@ function Counter() {
         >
           -
         </button>
-        <span>Count: {count}</span>
+        <input
+          type="text"
+          inputMode="numeric"
+          pattern="[0-9]*"
+          value={count}
+          onChange={handleCountChange}
+        />
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           onClick={increaseCount}
